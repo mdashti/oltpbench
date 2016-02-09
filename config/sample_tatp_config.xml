@@ -4,19 +4,19 @@
     <!-- Connection details -->
     <dbtype>mysql</dbtype>
     <driver>com.mysql.jdbc.Driver</driver>
-    <DBUrl>jdbc:mysql://server:3306/tatp</DBUrl>
-    <username>user</username>
-    <password>password</password>
+    <DBUrl>jdbc:mysql://localhost:3306/tatp</DBUrl>
+    <username>root</username>
+    <password>ROOT</password>
     <isolation>TRANSACTION_SERIALIZABLE</isolation>
         
     <!-- Scalefactor increases the number of subscribers -->
-    <scalefactor>100</scalefactor>
+    <scalefactor>1</scalefactor>
     
     <!-- The workload -->
     <terminals>10</terminals>
     <works>
         <work>
-            <time>300</time>
+            <time>3</time>
             <rate>10000</rate>
             <weights>2, 35, 10, 35, 2, 14, 2</weights>
         </work>
