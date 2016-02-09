@@ -25,8 +25,10 @@ import java.sql.SQLException;
 import com.oltpbenchmark.api.Procedure;
 import com.oltpbenchmark.api.SQLStmt;
 import com.oltpbenchmark.benchmarks.tatp.TATPConstants;
+import org.apache.log4j.Logger;
 
 public class GetAccessData extends Procedure {
+    private static final Logger LOG = Logger.getLogger(DeleteCallForwarding.class);
 
      public final SQLStmt getAccessInfo = new SQLStmt(
          "SELECT data1, data2, data3, data4 FROM " + TATPConstants.TABLENAME_ACCESS_INFO + 
@@ -34,6 +36,7 @@ public class GetAccessData extends Procedure {
      );
 
      public void run(Connection conn, long s_id, byte ai_type) throws SQLException {
+        if (LOG.isTraceEnabled()) LOG.trace(String.format("GetAccessData,%d,%d",s_id,ai_type));
     	 PreparedStatement stmt = this.getPreparedStatement(conn, getAccessInfo);
     	 stmt.setLong(1, s_id);
     	 stmt.setByte(2, ai_type);

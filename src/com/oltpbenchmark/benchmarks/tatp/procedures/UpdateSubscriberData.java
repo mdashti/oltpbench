@@ -24,8 +24,10 @@ import java.sql.SQLException;
 import com.oltpbenchmark.api.Procedure;
 import com.oltpbenchmark.api.SQLStmt;
 import com.oltpbenchmark.benchmarks.tatp.TATPConstants;
+import org.apache.log4j.Logger;
 
 public class UpdateSubscriberData extends Procedure {
+    private static final Logger LOG = Logger.getLogger(DeleteCallForwarding.class);
 
     public final SQLStmt updateSubscriber = new SQLStmt(
         "UPDATE " + TATPConstants.TABLENAME_SUBSCRIBER + " SET bit_1 = ? WHERE s_id = ?"
@@ -36,6 +38,7 @@ public class UpdateSubscriberData extends Procedure {
     );
 
     public long run(Connection conn, long s_id, byte bit_1, short data_a, byte sf_type) throws SQLException {
+        if (LOG.isTraceEnabled()) LOG.trace(String.format("UpdateSubscriberData,%d,%d,%d,%d",s_id,bit_1,data_a,sf_type));
     	PreparedStatement stmt = this.getPreparedStatement(conn, updateSubscriber);
     	stmt.setByte(1, bit_1);
     	stmt.setLong(2, s_id);

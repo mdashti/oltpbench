@@ -25,8 +25,10 @@ import java.sql.SQLException;
 import com.oltpbenchmark.api.Procedure;
 import com.oltpbenchmark.api.SQLStmt;
 import com.oltpbenchmark.benchmarks.tatp.TATPConstants;
+import org.apache.log4j.Logger;
 
 public class DeleteCallForwarding extends Procedure {
+	private static final Logger LOG = Logger.getLogger(DeleteCallForwarding.class);
 
 	public final SQLStmt getSubscriber = new SQLStmt(
 		"SELECT s_id FROM " + TATPConstants.TABLENAME_SUBSCRIBER + " WHERE sub_nbr = ?"
@@ -38,6 +40,10 @@ public class DeleteCallForwarding extends Procedure {
     );
 
     public long run(Connection conn, String sub_nbr, byte sf_type, byte start_time) throws SQLException {
+        
+        
+        if (LOG.isTraceEnabled()) LOG.trace(String.format("DeleteCallForwarding,%s,%d,%d",sub_nbr,sf_type,start_time));
+                
     	PreparedStatement stmt = this.getPreparedStatement(conn, getSubscriber);
     	stmt.setString(1, sub_nbr);
     	ResultSet results = stmt.executeQuery();
