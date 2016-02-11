@@ -19,3 +19,5 @@ output.res
 # maven output
 target
 config.properties
+run/mysql
+commands.txt
