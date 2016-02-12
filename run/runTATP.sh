@@ -49,7 +49,7 @@ java  -Dlog4j.configuration=./log4j.properties -Xmx1024m -cp `run/classpath.sh` 
 cp commands.txt $SCRIPT_DIR/mysql/tatp-commands-s$SCALE-"$TIME"sec.txt
 
 #creating text backup from output
-resdir="$SCRIPT_DIR/mysql/results-$DB-s$SCALE-mysql"
+resdir="$SCRIPT_DIR/mysql/results-$DB-s$SCALE-"$TIME"sec-mysql"
 eval "rm -rf $resdir"
 eval "mkdir -p $resdir"
 eval "chmod -R 777 $resdir"
