@@ -42,7 +42,7 @@ public class DeleteCallForwarding extends Procedure {
     public long run(Connection conn, String sub_nbr, byte sf_type, byte start_time) throws SQLException {
         
         
-        if (LOG.isTraceEnabled()) LOG.trace(String.format("DeleteCallForwarding,%s,%d,%d",sub_nbr,sf_type,start_time));
+        if (LOG.isTraceEnabled()) LOG.trace(String.format("DeleteCallForwarding %s %d %d",sub_nbr,sf_type,start_time));
                 
     	PreparedStatement stmt = this.getPreparedStatement(conn, getSubscriber);
     	stmt.setString(1, sub_nbr);

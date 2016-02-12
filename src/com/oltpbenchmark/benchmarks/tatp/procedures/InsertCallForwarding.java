@@ -43,7 +43,7 @@ public class InsertCallForwarding extends Procedure {
     );
      
     public long run(Connection conn, String sub_nbr, byte sf_type, byte start_time, byte end_time, String numberx) throws SQLException {
-        if (LOG.isTraceEnabled()) LOG.trace(String.format("InsertCallForwarding,%s,%d,%d,%d,%s",sub_nbr,sf_type,start_time,end_time,numberx));
+        if (LOG.isTraceEnabled()) LOG.trace(String.format("InsertCallForwarding %s %d %d %d %s",sub_nbr,sf_type,start_time,end_time,numberx));
         PreparedStatement stmt = this.getPreparedStatement(conn, getSubscriber);
         stmt.setString(1, sub_nbr);
         ResultSet results = stmt.executeQuery();

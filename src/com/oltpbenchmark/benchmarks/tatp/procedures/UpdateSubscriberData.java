@@ -38,7 +38,7 @@ public class UpdateSubscriberData extends Procedure {
     );
 
     public long run(Connection conn, long s_id, byte bit_1, short data_a, byte sf_type) throws SQLException {
-        if (LOG.isTraceEnabled()) LOG.trace(String.format("UpdateSubscriberData,%d,%d,%d,%d",s_id,bit_1,data_a,sf_type));
+        if (LOG.isTraceEnabled()) LOG.trace(String.format("UpdateSubscriberData %d %d %d %d",s_id,bit_1,data_a,sf_type));
     	PreparedStatement stmt = this.getPreparedStatement(conn, updateSubscriber);
     	stmt.setByte(1, bit_1);
     	stmt.setLong(2, s_id);

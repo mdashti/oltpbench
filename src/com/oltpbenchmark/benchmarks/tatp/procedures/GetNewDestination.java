@@ -44,7 +44,7 @@ public class GetNewDestination extends Procedure {
      );
 
      public void run(Connection conn, long s_id, byte sf_type, byte start_time, byte end_time) throws SQLException {
-        if (LOG.isTraceEnabled()) LOG.trace(String.format("GetNewDestination,%d,%d,%d,%d",s_id,sf_type,start_time,end_time));
+        if (LOG.isTraceEnabled()) LOG.trace(String.format("GetNewDestination %d %d %d %d",s_id,sf_type,start_time,end_time));
     	 PreparedStatement stmt = this.getPreparedStatement(conn, getNewDestination);
     	 stmt.setLong(1, s_id);
     	 stmt.setByte(2, sf_type);

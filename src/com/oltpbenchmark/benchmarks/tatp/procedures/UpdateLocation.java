@@ -39,7 +39,7 @@ public class UpdateLocation extends Procedure {
     );
     
     public long run(Connection conn, int location, String sub_nbr) throws SQLException {
-        if (LOG.isTraceEnabled()) LOG.trace(String.format("UpdateLocation,%d,%s",location,sub_nbr));
+        if (LOG.isTraceEnabled()) LOG.trace(String.format("UpdateLocation %d %s",location,sub_nbr));
     	PreparedStatement stmt = this.getPreparedStatement(conn, getSubscriber);
     	stmt.setString(1, sub_nbr);
     	ResultSet results = stmt.executeQuery();

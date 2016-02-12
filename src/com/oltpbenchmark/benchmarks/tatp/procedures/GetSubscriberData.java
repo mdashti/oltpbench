@@ -35,7 +35,7 @@ public class GetSubscriberData extends Procedure {
     );
 
     public void run(Connection conn, long s_id) throws SQLException {
-        if (LOG.isTraceEnabled()) LOG.trace(String.format("GetSubscriberData,%d",s_id));
+        if (LOG.isTraceEnabled()) LOG.trace(String.format("GetSubscriberData %d",s_id));
         PreparedStatement stmt = this.getPreparedStatement(conn, getSubscriber);
     	stmt.setLong(1, s_id);
     	ResultSet results = stmt.executeQuery();

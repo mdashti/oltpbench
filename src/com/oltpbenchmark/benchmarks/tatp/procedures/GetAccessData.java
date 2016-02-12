@@ -36,7 +36,7 @@ public class GetAccessData extends Procedure {
      );
 
      public void run(Connection conn, long s_id, byte ai_type) throws SQLException {
-        if (LOG.isTraceEnabled()) LOG.trace(String.format("GetAccessData,%d,%d",s_id,ai_type));
+        if (LOG.isTraceEnabled()) LOG.trace(String.format("GetAccessData %d %d",s_id,ai_type));
     	 PreparedStatement stmt = this.getPreparedStatement(conn, getAccessInfo);
     	 stmt.setLong(1, s_id);
     	 stmt.setByte(2, ai_type);
