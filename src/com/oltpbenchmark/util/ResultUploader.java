@@ -80,7 +80,11 @@ public class ResultUploader {
         username = expConf.getString("username");
         password = expConf.getString("password");
         benchType = argsLine.getOptionValue("b");
-        windowSize = Integer.parseInt(argsLine.getOptionValue("s"));
+        if (argsLine.hasOption("s")) {
+            windowSize = Integer.parseInt(argsLine.getOptionValue("s"));
+        } else {
+            windowSize = 0;
+        }
         uploadCode = expConf.getString("uploadCode");
         uploadUrl = expConf.getString("uploadUrl");
 
