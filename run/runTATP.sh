@@ -5,6 +5,7 @@ SCRIPT_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 #script params
 SCALE=`python -c "from lxml.etree import parse; from sys import stdin; print parse(stdin).xpath('//scalefactor')[0].text" < $SCRIPT_DIR/../config/sample_tatp_config.xml`
+TIME=`python -c "from lxml.etree import parse; from sys import stdin; print parse(stdin).xpath('//time')[0].text" < $SCRIPT_DIR/../config/sample_tatp_config.xml`
 DBUSER=`python -c "from lxml.etree import parse; from sys import stdin; print parse(stdin).xpath('//username')[0].text" < $SCRIPT_DIR/../config/sample_tatp_config.xml`
 PASS=`python -c "from lxml.etree import parse; from sys import stdin; print parse(stdin).xpath('//password')[0].text" < $SCRIPT_DIR/../config/sample_tatp_config.xml`
 DB=tatp
@@ -43,6 +44,9 @@ echo "Finished loading the database"
 eval "cd $SCRIPT_DIR/.."
 
 java  -Dlog4j.configuration=./log4j.properties -Xmx1024m -cp `run/classpath.sh` com.oltpbenchmark.DBWorkload -b tatp -c config/sample_tatp_config.xml --execute true
+
+#copying commands.txt to mysql directory
+cp commands.txt $SCRIPT_DIR/mysql/tatp-commands-s$SCALE-"$TIME"sec.txt
 
 #creating text backup from output
 resdir="$SCRIPT_DIR/mysql/results-$DB-s$SCALE-mysql"
