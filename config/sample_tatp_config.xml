@@ -10,14 +10,14 @@
     <isolation>TRANSACTION_SERIALIZABLE</isolation>
         
     <!-- Scalefactor increases the number of subscribers -->
-    <scalefactor>10</scalefactor>
+    <scalefactor>1</scalefactor>
     
     <!-- The workload -->
     <terminals>1</terminals>
     <works>
         <work>
-            <time>300</time>
-            <rate>10000</rate>
+            <time>30</time>
+            <rate>unlimited</rate>
             <weights>2, 35, 10, 35, 2, 14, 2</weights>
         </work>
     </works>

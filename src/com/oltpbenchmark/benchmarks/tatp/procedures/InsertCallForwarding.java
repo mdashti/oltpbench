@@ -73,7 +73,8 @@ public class InsertCallForwarding extends Procedure {
         try {
             rows_updated = stmt.executeUpdate();
         } catch (SQLException ex) {
-            throw new UserAbortException("Failed to insert a row in " + TATPConstants.TABLENAME_CALL_FORWARDING);
+            //throw new UserAbortException("Failed to insert a row in " + TATPConstants.TABLENAME_CALL_FORWARDING);
+            assert(false);
         }
         return (rows_updated);
     }

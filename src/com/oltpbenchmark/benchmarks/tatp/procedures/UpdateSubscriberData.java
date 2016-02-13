@@ -38,21 +38,20 @@ public class UpdateSubscriberData extends Procedure {
     );
 
     public long run(Connection conn, long s_id, byte bit_1, short data_a, byte sf_type) throws SQLException {
-        if (LOG.isTraceEnabled()) LOG.trace(String.format("UpdateSubscriberData,%d,%d,%d,%d",s_id,bit_1,data_a,sf_type));
-        PreparedStatement stmt = this.getPreparedStatement(conn, updateSubscriber);
-        stmt.setByte(1, bit_1);
-        stmt.setLong(2, s_id);
-        int updated = stmt.executeUpdate();
-        assert(updated == 1);
+        if (LOG.isTraceEnabled()) LOG.trace(String.format("UpdateSubscriberData %d %d %d %d",s_id,bit_1,data_a,sf_type));
         
-        stmt = this.getPreparedStatement(conn, updateSpecialFacility);
+        PreparedStatement stmt = this.getPreparedStatement(conn, updateSpecialFacility);
         stmt.setShort(1, data_a);
         stmt.setLong(2, s_id);
         stmt.setByte(3, sf_type);
+        int updated = stmt.executeUpdate();
+        assert (updated != 0);
+        
+        stmt = this.getPreparedStatement(conn, updateSubscriber);
+        stmt.setByte(1, bit_1);
+        stmt.setLong(2, s_id);
         updated = stmt.executeUpdate();
-        if (updated != 0) {
-            throw new UserAbortException("Failed to update a row in " + TATPConstants.TABLENAME_SPECIAL_FACILITY);
-        }
+        assert(updated == 1);
         return (updated);
     }
 }
