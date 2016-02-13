@@ -26,7 +26,7 @@ public class Phase {
         REGULAR,POISSON,
     }
 
-    private final Random gen = new Random();
+    private final static Random gen = new HighQualityRandom();
     public final String benchmarkName;
     public final int id;
     public final int time;
