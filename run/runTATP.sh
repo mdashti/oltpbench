@@ -3,6 +3,10 @@
 #change dir to directory of script
 SCRIPT_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
+cd ..
+and build
+cd $SCRIPT_DIR
+
 #script params
 SCALE=`python -c "from lxml.etree import parse; from sys import stdin; print parse(stdin).xpath('//scalefactor')[0].text" < $SCRIPT_DIR/../config/sample_tatp_config.xml`
 TIME=`python -c "from lxml.etree import parse; from sys import stdin; print parse(stdin).xpath('//time')[0].text" < $SCRIPT_DIR/../config/sample_tatp_config.xml`
