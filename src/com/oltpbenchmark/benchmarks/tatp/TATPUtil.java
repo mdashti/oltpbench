@@ -28,7 +28,11 @@ public abstract class TATPUtil {
     }
 
     public static Long getSubscriberId(long subscriberSize) {
-        return (TATPUtil.number(1, subscriberSize));
+//        return (TATPUtil.number(1, subscriberSize));
+            long x = 0;
+            long y = subscriberSize;
+            long A = 65535;
+          return ((TATPUtil.number(0, A) | TATPUtil.number(x, y)) % (y - x + 1)) + x;
     }
     
     // modified from tpcc.RandomGenerator
